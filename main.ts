@@ -1,5 +1,5 @@
 function congrats () {
-    basic.showString("congrats you reached 10 cookies")
+    basic.showString("congrats you reached 1000 cookies")
     basic.pause(100)
     basic.showLeds(`
         . # . # .
@@ -11,7 +11,7 @@ function congrats () {
 }
 function buy_A (counter: number) {
     if (counter >= 5) {
-        counter_bought_X = counter_bought_X + 1
+        counter_bought_A = counter_bought_A + 1
         balance += -5
     } else {
         basic.showString("No money")
@@ -47,8 +47,8 @@ input.onButtonPressed(Button.A, function () {
 })
 function display_message (counter: number, counter_x: number, counter_y: number) {
     message = "C=" + balance
-    message = "" + message + ("X=" + counter_bought_X)
-    message = "" + message + ("Y=" + counter_bought_Y)
+    message = "" + message + ("A=" + counter_bought_A)
+    message = "" + message + ("B=" + counter_bought_B)
     basic.showString(message)
     basic.pause(500)
     basic.showLeds(`
@@ -61,14 +61,14 @@ function display_message (counter: number, counter_x: number, counter_y: number)
 }
 function buy_B (counter: number) {
     if (counter >= 10) {
-        counter_bought_Y = counter_bought_Y + 1
+        counter_bought_B = counter_bought_B + 1
         balance += -10
     } else {
         basic.showString("No money")
     }
 }
 function check_balence_and_congrats () {
-    if (balance == 10) {
+    if (balance == 1000) {
         congrats()
         basic.pause(100)
         basic.showString("do you want to restart")
@@ -89,17 +89,17 @@ input.onButtonPressed(Button.B, function () {
         is_waiting_to_reset = 0
     }
     if (is_in_store == 0) {
-        display_message(balance, counter_bought_X, counter_bought_Y)
+        display_message(balance, counter_bought_A, counter_bought_B)
     } else {
         buy_B(balance)
     }
 })
-let counter_bought_Y = 0
+let counter_bought_B = 0
 let message = ""
 let is_in_store = 0
 let is_waiting_to_reset = 0
 let balance = 0
-let counter_bought_X = 0
+let counter_bought_A = 0
 basic.showLeds(`
     . . . . .
     . # # # .
